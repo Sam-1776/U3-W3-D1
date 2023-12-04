@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row g-4 mt-3">
+    <h1>Products</h1>
+  <div class="col-8">
+    <div class="row g-2">
+        <div class="col-4" *ngFor="let product of products; let i = index">
+          <div class="card">
+            <img src="{{ product.thumbnail }}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.title }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-outline-primary"><i class="bi bi-cart" (click)="addCart(i)"></i>{{product.price}}€</button>
+                <button class="btn btn-outline-danger" (click)="addFavorite(i)" [disabled]="click === true"><i class="bi bi-heart-fill"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <h3>Cart</h3>
+    <h5>Amount: {{total}}€</h5>
+    <ul *ngFor="let buy of buys" class="list-group">
+        <li class="list-group-item">{{buy.title}}</li>
+    </ul>
+  </div>
+  </div>
+</div>
